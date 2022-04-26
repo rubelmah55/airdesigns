@@ -1,0 +1,185 @@
+<?php
+
+get_header();
+
+$query_var = get_queried_object();
+
+$terms_category = get_terms('product_category', array('hide_empty' => false, 'parent' => 0));
+
+
+$terms_color = get_terms(array(
+    'taxonomy' => 'color',
+    'hide_empty' => false,
+));
+
+$terms_age = get_terms(array(
+    'taxonomy' => 'age',
+    'hide_empty' => false,
+));
+//  var_dump( $terms_age);
+$terms_floor = get_terms(array(
+    'taxonomy' => 'floor',
+    'hide_empty' => false,
+));
+$terms_stamp = get_terms(array(
+    'taxonomy' => 'Stamps',
+    'hide_empty' => false,
+));
+$terms_view = get_terms(array(
+    'taxonomy' => 'view',
+    'hide_empty' => false,
+));
+
+$posts = get_posts(
+
+    array(
+        'post_type' => 'product',
+        'numberposts' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => $query_var->taxonomy,
+                'field' => 'slug',
+                'terms' => $query_var->name,
+            ))));
+
+?>
+
+
+<div class="main-wrapper">
+   <div class="taxonomy_name"><h1><?php echo $query_var->name ?></h1></div>
+      <div class="filter_product">
+         <div class="container">
+         <div class="row">
+            <div class="col-md-9 product_taxonomy">
+               <div class="sub_category">
+                  <?php if(!empty($terms_category)){ ?>
+                        <select name="sub_cat" id="sub_cat">
+                           <?php 
+                           foreach ($terms_category as $term_parent) {
+
+                           $terms_sub_cat = get_terms('product_category', array('hide_empty' => false, 'parent' => $term_parent->term_id));;
+                           foreach ($terms_sub_cat as  $term_sub_cat){ 
+                              $term_link=get_term_link($term_sub_cat);
+                              ?>
+                              <option value="<?php echo $term_link ?>" ><?php echo $term_sub_cat->name ?></option>
+                           <?php }} ?>
+                        </select>
+                     <?php } 
+                      else{
+                      ?>   
+                        <select name="sub_cat" id="sub_cat">
+                        <option value="" disabled>sub category</option>
+                        </select>
+                        <?php } ?>
+
+               </div>
+               <div class="product_floor">
+                  <?php if (!empty($terms_floor)) {?>
+                        <select name="floor" id="floor">
+                           <?php foreach ($terms_floor as $key => $term_floor):
+                            $term_link = get_term_link($term_floor);
+                                    ?>
+	                              <option value="<?php echo $term_link ?>" <?php if ($term_floor->name == $query_var->name) {echo "selected";}?>><?php echo $term_floor->name ?></option>
+	                            <?php endforeach;?>
+                        </select>
+                  <?php } else {?>
+                        <select name="floor" id="floor">
+                        <option value="" disabled>floor</option>
+                        </select>
+                  <?php }?>
+               </div>
+               <div enter-class="product_age">
+                  <?php if (!empty($terms_age)) {?>
+                        <select name="age" id="age">
+                           <?php foreach ($terms_age as $key => $term_age):
+                            $term_link = get_term_link($term_age);
+                                ?>
+		                        <option value="<?php echo $term_link ?>" <?php if ($term_age->name == $query_var->name) {echo "selected";}?>><?php echo $term_age->name ?></option>
+		                    <?php endforeach;?>
+                        </select>
+                     <?php } else {?>
+                        <select name="age" id="age">
+                        <option value="age" disabled>age</option>
+                        </select>
+                  <?php }?>
+               </div>
+               <div class="product_color">
+                  <?php if (!empty($terms_color)) {?>
+                        <select name="color" id="color">
+                        <?php foreach ($terms_color as $key => $term_color):
+                            $term_link = get_term_link($term_color);
+                        ?>
+			                  <option value="<?php echo $term_link ?>" <?php if ($term_color->name == $query_var->name) {echo "selected";}?>><?php echo $term_color->name ?></option>
+			                  <?php endforeach;?>
+                        </select>
+                    <?php } else {?>
+                        <select name="color" id="color">
+                        <option value="" disabled>age</option>
+                        </select>
+                  <?php }?>
+               </div>
+               <div class="product_view">
+                  <?php if (!empty($terms_view)) {?>
+                        <select name="view" id="view">
+                           <?php foreach ($terms_view as $key => $term_view):
+                            $term_link = get_term_link($term_view);
+                            ?>
+			                     <option value="<?php echo $term_link ?>" <?php if ($term_view->name == $query_var->name) {echo "selected";}?>><?php echo $term_view->name ?></option>
+			                  <?php endforeach;?>
+                        </select>
+                     <?php } else {?>
+                        <select name="" id="">
+                        <option value="" disabled>age</option>
+                        </select>
+                  <?php }?>
+               </div>
+               <div class="product_stamp">
+                  <?php if (!empty($terms_stamp)) {?>
+                        <select name="stamp" id="stamp">
+                           <?php foreach ($terms_stamp as $key => $term_stamp):
+                            $term_link = get_term_link($term_stamp);
+                            ?>
+				               <option value="<?php echo $term_link ?>" <?php if ($term_stamp->name == $query_var->name) {echo "selected";}?>><?php echo $term_stamp->name ?></option>
+				               <?php endforeach;?>
+                        </select>
+                     <?php } else {?>
+                        <select name="stamp" id="stamp">
+                        <option value="" disabled>age</option>
+                        </select>
+                  <?php }?>
+               </div>
+            </div>
+            <div class="col-sm-3 sorting">
+               <div class="product_count">
+                 <?php  echo count($posts);?> products
+               </div>
+               <div class="product_sort">
+                  <select name="" id="">
+                     <option value="">Top to bottom</option>
+                     <option value="">Bottom to Top</option>
+
+                  </select>
+               </div>
+            </div>
+         </div>
+     </div>
+      <div>
+
+<div class="wrapper-container container">
+   <div class="entry_content row">
+     <?php foreach ($posts as $post) {?>
+
+       <div class="post_card col-md-4">
+           <a href="<?php echo  get_the_permalink($post->ID) ?>"><div class="post_thumbnail"><?php  echo   get_the_post_thumbnail( $post->ID,'full' )?></div></a>
+           <div class="post_product_label"><?php echo  get_post_meta( $post->ID,'product_label',true )?></div>
+           <div class="post_permalink"><a href="<?php echo  get_the_permalink() ?>">Read More</a></div>
+           <div class="post_title"><?php echo   get_the_title(); ?></div>
+           <div class="post_sku"><?php   echo   get_post_meta( $post->ID,'sku',true ); ?></div>
+       </div> 
+
+    <?php }?>
+   </div>
+</div>
+</div>
+
+<? get_footer() ?>

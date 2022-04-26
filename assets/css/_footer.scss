@@ -1,0 +1,127 @@
+.newsletter-subscribe-wrapper { 
+    padding: 20px 0px;
+    border-top: 2px solid rgb(157, 172, 176);
+    border-bottom: 2px solid rgb(157, 172, 176);
+    box-sizing: border-box;
+    
+    .newsletter-wrapper { 
+
+        .newsletter-title { 
+
+            h4 { 
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+
+        .news-letter-form { 
+            width: 60%;
+
+            @media (max-width: 991px) {
+                width: 100%;
+            }
+
+            form { 
+                position: relative;
+                
+                input { 
+                    height: 48px;
+                    width: 100%;
+                    padding: 0px 30px;
+                    font-size: 13px;
+                    color: $primary;
+                    border-radius: 30px;
+                    border: 1px solid $primary;
+                    box-sizing: border-box;
+    
+                }
+
+                input[type="submit"] {
+                    background: $primary;
+                    position: absolute;
+                    right: 0;
+                    border: 0px;
+                    top: 0;
+                    line-height: 48px;
+                    font-size: 13px;
+                    transition: all .4s ease-in-out;
+                    border-radius: 30px;
+                    height: 48px;
+                    text-align: center;
+                    color:#fff;
+                    box-sizing: border-box;
+                    width: 148px;
+    
+                    &:hover {
+                        color: $white;
+                        background: $secondary;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+.footer-widgets-wrapper {
+
+    .single-footer-wid { 
+        margin-top: 30px;
+
+        ul { 
+    
+            li { 
+                display: block;
+    
+                a { 
+                    font-size: 13px;
+                    color: $primary;
+                    line-height: 30px;
+                    text-transform: uppercase;
+                    font-weight: 500;
+    
+                    &:hover {
+                        color: $secondary;
+                    }
+                }
+            }
+        }
+    }
+
+    .special-footer {
+        margin-top: 30px;
+
+        .special-footer-title {
+            font-size: 16px;
+            font-weight: 700;
+            border-bottom: 1px solid rgb(157, 172, 176);
+        }
+
+        .single-footer-wid { 
+            margin-top: 15px;
+        }
+    }
+}
+
+.footer-bottom-wrapper {
+    padding-top: 30px;
+
+    .social-links {
+        a {
+
+            svg{
+                width:40px;
+            }
+        }
+    }
+
+    .copyright-text {
+        margin-top: 15px;
+
+        p {
+            font-size: 13px;
+            color: $primary;
+        }
+    }
+}

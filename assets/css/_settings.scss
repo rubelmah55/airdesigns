@@ -1,0 +1,160 @@
+/*-------------------------------
+1 - Bootstrap core
+------------------------------*/
+
+	// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+	@import "../libs/bootstrap-5.0.2/scss/functions";
+
+	// 2. Include any default variable overrides here
+
+		//Colors
+			$white: #fff;
+			$dark: #333333;
+			$gray: #666666;
+			$gray-light: #eeeeee;
+			$black: #000;
+
+			$primary: #0a303a;		//zetes blue
+			$secondary: #ce3336;	//zetes orange
+
+			$orange: #ed6d02;		//zetes orange
+			$blue: #004283;			//zetes blue
+
+			$box-shadow: rgba(0, 0, 0, 0.098) 0px 0px 10px;
+
+		//Bootstrap variables define
+			$grid-columns:      12;
+			$grid-gutter-width: 10px;
+			$grid-gutter-width-base: 10px;
+			$grid-gutter-widths: (
+				xs: 10px,
+				sm: 10px,
+				md: $grid-gutter-width-base,
+				lg: $grid-gutter-width-base,
+				xl: $grid-gutter-width-base
+			) !default;
+
+			$grid-breakpoints: (
+				// Extra small screen / phone
+				xs: 0,
+				// Small screen / phone
+				sm: 540px,
+				// Medium screen / tablet
+				md: 720px,
+				// Large screen / desktop (target 1024 screen resolutions)
+				lg: 960px,
+				// Extra large screen / wide desktop (target 1280 screen resolutions)
+				xl: 1140px,
+				// Extra-extra large screen :)
+				xxl: 1238px
+			);
+
+			$container-max-widths: (
+				sm: 540px,
+				md: 720px,
+				lg: 960px,
+				xl: 1140px,
+				xxl: 1238px
+			);
+
+			$primary:       $primary !default;
+			$secondary:     $secondary !default;
+			
+			$btn-font-size: 1.125rem;
+
+			$btn-border-radius: 30px;
+			$btn-border-width: 3px;
+			
+			$btn-padding-y: 10px;
+			$btn-padding-x: 30px;
+			
+			$btn-padding-y-lg: 12px;
+			$btn-padding-x-lg: 25px; 
+			
+			$spacer: 0.625rem !default; //10px
+			$spacers: (
+				0: 0,				//0px
+				1: ($spacer),		//10px
+				2: ($spacer * 2),	//20px
+				3: ($spacer * 3),	//30px
+				4: ($spacer * 4),	//40px
+				5: ($spacer * 5),	//50px
+				6: ($spacer * 6),	//60px
+				7: ($spacer * 7),	//70px
+				8: ($spacer * 8),	//80px
+				9: ($spacer * 9),	//90px
+				10: ($spacer * 10),	//100px
+				15: ($spacer * 15),	//150px
+				20: ($spacer * 20),	//200px
+				25: ($spacer * 25)	//250px
+			) !default;
+
+			$body-color: $gray !default;
+			
+			$font-size-base: 1.25rem !default; //20px
+			$font-size-sm: 1rem; //16px
+			$font-size-lg: 1.5rem; //24px
+
+			$font-family-base: 'DIN Pro', sans-serif !default;
+
+			$h1-font-size: 3.125rem !default;	//60px
+			$h2-font-size: 2.125rem !default;	//34px
+			$h3-font-size: 1.5rem !default;		//24px
+			$h4-font-size: 1.375rem !default;	//22px
+			$h5-font-size: 1.25rem !default;	//20px
+			$h6-font-size: 1.125rem !default;	//18px
+
+	// 3. Include remainder of required Bootstrap stylesheets
+	@import "../libs/bootstrap-5.0.2/scss/variables";
+	@import "../libs/bootstrap-5.0.2/scss/mixins";
+
+	// 4. Include any optional Bootstrap components as you like
+	@import "../libs/bootstrap-5.0.2/scss/root";
+	@import "../libs/bootstrap-5.0.2/scss/reboot";
+	@import "../libs/bootstrap-5.0.2/scss/type";
+	@import "../libs/bootstrap-5.0.2/scss/images";
+	@import "../libs/bootstrap-5.0.2/scss/grid";
+	@import "../libs/bootstrap-5.0.2/scss/containers";
+
+	/*@import "../libs/bootstrap-5.0.2/scss/code";*/
+	@import "../libs/bootstrap-5.0.2/scss/tables";
+	@import "../libs/bootstrap-5.0.2/scss/forms";
+	@import "../libs/bootstrap-5.0.2/scss/buttons";
+	@import "../libs/bootstrap-5.0.2/scss/transitions";
+	@import "../libs/bootstrap-5.0.2/scss/dropdown";
+	@import "../libs/bootstrap-5.0.2/scss/button-group";
+	/* @import "../libs/bootstrap-5.0.2/scss/input-group"; */
+	@import "../libs/bootstrap-5.0.2/scss/nav";
+	@import "../libs/bootstrap-5.0.2/scss/navbar";
+	@import "../libs/bootstrap-5.0.2/scss/card";
+	/* @import "../libs/bootstrap-5.0.2/scss/breadcrumb"; */
+	@import "../libs/bootstrap-5.0.2/scss/pagination";
+	@import "../libs/bootstrap-5.0.2/scss/badge";
+	/* @import "../libs/bootstrap-5.0.2/scss/jumbotron"; */
+	@import "../libs/bootstrap-5.0.2/scss/alert";
+	/* @import "../libs/bootstrap-5.0.2/scss/progress"; */
+	@import "../libs/bootstrap-5.0.2/scss/list-group";
+	@import "../libs/bootstrap-5.0.2/scss/close";
+	@import "../libs/bootstrap-5.0.2/scss/modal";
+	@import "../libs/bootstrap-5.0.2/scss/tooltip";
+	@import "../libs/bootstrap-5.0.2/scss/popover";
+	@import "../libs/bootstrap-5.0.2/scss/carousel";
+	@import "../libs/bootstrap-5.0.2/scss/utilities";
+	@import "../libs/bootstrap-5.0.2/scss/utilities/api";
+	/* @import "../libs/bootstrap-5.0.2/scss/print"; */
+
+/*-------------------------------
+2 - Typography
+------------------------------*/
+
+
+
+/*-------------------------------
+3 - Spacing
+------------------------------*/
+
+
+
+/*-------------------------------
+4 - Elements
+------------------------------*/

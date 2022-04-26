@@ -1,0 +1,209 @@
+<?php
+/**
+ * The single post template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WordPress
+ * @subpackage Embrace Nature
+ * @since Embrace Nature 1.0
+ */
+
+get_header(); 
+
+if ( function_exists('yoast_breadcrumb') ) {
+	yoast_breadcrumb( '<p id="breadcrumbs" class="container">','</p>' );
+}
+?>
+
+
+<div class="single-product">
+
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-3 ">
+
+				<div class="product-featured-image">
+
+					<div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+						<?php 
+						$productfeaturedimage = get_field('product_featured_image');
+						if( $productfeaturedimage ): ?>
+							<div class="carousel-inner" role="listbox">
+								<?php foreach( $productfeaturedimage  as $key => $productfeaturedimage ): ?>
+									<?php $active_class =$key==0?'active':'';?>
+									<div class="carousel-item <?php echo $active_class;?>">
+											<img src="<?php echo esc_url($productfeaturedimage['sizes']['thumbnail']); ?>" alt="<?php echo esc_attr($productfeaturedimage['alt']); ?>" />
+									</div>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<div class="product-detail-galley">
+					<?php 
+					$productvideos = get_field('product_videos_and_images_gallery');
+					if( $productvideos ): ?>
+						<ul>
+							<?php foreach( $productvideos as $productvideos ): ?>
+								<li>
+									<a href="<?php echo esc_url($productvideos['url']); ?>">
+										<img src="<?php echo esc_url($productvideos['sizes']['thumbnail']); ?>" alt="<?php echo esc_attr($productvideos['alt']); ?>" />
+									</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+				
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-3">
+
+				<div class="single-product-content">
+		  
+					<div class="brand-img">
+						<?php 
+						$productbrandimage = get_field('product_brand_logo');
+						if( !empty( $productbrandimage ) ): ?>
+							<img src="<?php echo esc_url($productbrandimage['url']); ?>" alt="<?php echo esc_attr($productbrandimage['alt']); ?>" />
+						<?php endif; ?>
+					</div>
+
+					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+					<span class="price"><?php the_field('product_prices'); ?></span>
+
+					<span class="short-description"><?php the_field('porduct_short_description'); ?></span>
+
+					<?php if( have_rows('product_color') ): ?>
+						<ul class="color-variations">
+							<span><b>Цвят :</b> 
+								<?php while( have_rows('product_color') ): the_row(); 
+									?>
+									<li><?php the_sub_field('product_color_variations'); ?></li>
+								<?php endwhile; ?>
+							</span>
+						</ul>
+					<?php endif; ?>
+
+					<div class="featured-image-bullet-points">
+						<?php 
+						$productfeaturedimage = get_field('product_featured_image');
+						if( $productfeaturedimage ): ?>
+							<ol class="carousel-indicators">
+								<?php foreach( $productfeaturedimage  as $key => $productfeaturedimage ): ?>
+									<?php $active_class =$key==0?'active':'';?>
+									<li data-target="#carousel-thumb" data-slide-to="<?php echo $key;?>" class="<?php echo $active_class;?>"> 
+										<img src="<?php echo esc_url($productfeaturedimage['sizes']['thumbnail']); ?>" alt="<?php echo esc_attr($productfeaturedimage['alt']); ?>" />
+									</li>
+								<?php endforeach; ?>
+							</ol>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<div class="accordion" id="accordionExample">
+
+					<div class="accordion-item">
+
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								<?php the_field('product_detail_title'); ?>
+							</button>
+						</h2>
+
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<?php if( have_rows('product_detail') ): ?>
+									<ul class="product-detail-list">
+										<?php while( have_rows('product_detail') ): the_row(); 
+											?>
+											<li>
+												<h2><b><?php the_sub_field('product_detail_tag'); ?></b></h2>
+											</li>
+											<li>
+												<p><?php the_sub_field('product_detail_items'); ?></p>
+											</li>
+										<?php endwhile; ?>
+									</ul>
+								<?php endif; ?>
+								<div class="product-content">
+									<p><?php the_field('product_reviews'); ?></p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="accordion-item">
+
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+								<?php the_field('product_detail_title'); ?>
+							</button>
+						</h2>
+
+						<div id="collapsetwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<?php if( have_rows('product_detail') ): ?>
+									<ul class="product-detail-list">
+										<?php while( have_rows('product_detail') ): the_row(); 
+											?>
+											<li>
+												<h2><?php the_sub_field('product_detail_tag'); ?></h2>
+											</li>
+											<li>
+												<p><?php the_sub_field('product_detail_items'); ?></p>
+											</li>
+										<?php endwhile; ?>
+									</ul>
+								<?php endif; ?>
+								<div class="product-content">
+									<p><?php the_field('product_reviews'); ?></p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			</div>
+		</div>
+	</div>
+
+
+<div class="related-product">
+	<h1 class="text-center">Други Предложения</h1>
+	<div class="wrapper-container container">
+		<div class="entry_content row">
+			<?php foreach ($posts as $post) {?>
+				<div class="post_card col-md-4 mb-5">
+					<div class="post-item">
+						<a href="<?php echo get_the_permalink($post->ID) ?>"><div class="post_thumbnail"><?php echo get_the_post_thumbnail($post->ID, 'full') ?></div> 
+							<div class="post-content">
+								<div class="post_product_label"><?php echo get_post_meta($post->ID, 'product_label', true) ?></div>
+								<div class="post_permalink"><a href="<?php echo get_the_permalink() ?>">Read More</a></div>
+								<div class="post_title"><a href="<?php echo get_the_permalink($post->ID) ?>"><?php echo get_the_title(); ?></a></div>
+								<div class="post_sku"><?php echo get_post_meta($post->ID, 'sku', true); ?></div>
+								<div class="nav-previous alignleft"><?php next_posts_link('Older posts');?></div>
+								<div class="nav-previous alignleft"><?php previous_posts_link('Older posts');?></div>
+							</div>
+						</a>
+					</div>
+				</div>
+			<?php }?>
+		</div>
+	</div>
+</div>
+<?php
+get_footer();
+?>

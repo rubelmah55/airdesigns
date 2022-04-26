@@ -1,0 +1,329 @@
+/*
+Theme Name: Zizito Branding
+Author: AirDesigns.us
+Author URI: https://airdesigns.us/
+Version: 1.0.0
+Text Domain: airdesigns
+*/
+
+/* 
+	placeholder file - styling in /assets/css/style.scss 
+*/
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body,
+html {
+	height: 100%;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html,
+body,
+div,
+span,
+img,
+ol,
+ul,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+option,
+legend,
+label,
+table,
+th,
+td,
+tr,
+article,
+aside,
+caption,
+figure,
+footer,
+header,
+hgroup,
+mark,
+nav,
+section,
+time,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+a {
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none;
+		outline: none !important;
+		border: 0;
+	}
+}
+
+input:focus {
+	outline: none;
+}
+
+input::-moz-focus-inner {
+	border: 0;
+	display: none;
+}
+
+input::-webkit-focus-inner {
+	border: 0;
+	display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0px 1000px rgba(119, 255, 210, 0.788) inset !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+}
+
+::placeholder {
+	color: #666;
+	opacity: 1;
+	/* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #666;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: #666;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+ul,
+li {
+	margin: 0;
+	padding: 0;
+}
+
+figure {
+	margin: 0px;
+}
+
+form {
+	position: relative;
+}
+
+.form-control:focus {
+	outline: none !important;
+	border: none !important;
+	box-shadow: 0 0 0;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+	font-size: inherit;
+	color: inherit;
+}
+
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a,
+h6:hover a {
+	font-size: inherit;
+	color: inherit;
+}
+
+hr {
+	margin: 0;
+	padding: 0;
+	border-color: #000;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	list-style: none;
+	position: relative;
+}
+
+a,
+button {
+	position: relative;
+
+	&:hover,
+	&:focus {
+		outline: 0;
+		text-decoration: none;
+	}
+}
+
+input,
+textarea,
+button {
+	border: 0px;
+}
+
+.admin-bar {
+	.mobile-nav.show {
+		top: 32px;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar {
+		.mobile-nav.show {
+			top: 46px;
+		}
+	}
+}
+
+
+
+@keyframes sticky {
+	0% {
+		opacity: 0;
+		margin-top: -120px;
+	}
+
+	50% {
+		opacity: 0;
+		margin-top: -60px;
+	}
+
+	100% {
+		opacity: 1;
+		margin-top: 0;
+	}
+}
+
+.taxonomy_name {
+	text-align: center;
+	padding: 3%;
+}
+
+.taxonomy_name h1 {
+	font-size: 45.33px;
+	font-weight: 500;
+	color: #0a303a;
+}
+
+.post_card {
+	position: relative;
+}
+
+.post_title {
+	padding: 4% 0 8% 0;
+	color: #0a303a;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+.post_sku {
+	font-size: 21px;
+	color: #0a303a;
+	font-weight: 400;
+	line-height: 32px;
+}
+
+.post_thumbnail {
+	width: 90%;
+	padding: 10% 0 10% 0;
+}
+
+.post_sku:before {
+	content: url(http://zizito2.test/wp-content/uploads/2022/04/icon-eye.png);
+	position: absolute;
+	right: 0;
+}
+
+.product_taxonomy {
+	display: flex;
+	gap: 5%;
+}
+
+.col-sm-3.sorting {
+	display: flex;
+	gap: 12%;
+}
+
+.filter_product select {
+	font-size: 16px;
+	border: none;
+	font-weight: 500;
+}
+
+.post_thumbnail img:hover {
+	opacity: 0.5;
+	-webkit-transition: 1s ease-in-out all;
+	transition: 1s ease-in-out all;
+	padding: 4%;
+	background-color: #e6f6f3;
+}
+
+.post_permalink a {
+	display: none;
+	left: 29%;
+	top: 30%;
+	position: absolute;
+	margin: 0 auto;
+	border: 2px solid #0a303a;
+	font-size: 20px;
+	padding: 12px 24px 12px 24px;
+	border-radius: 32px;
+	background: white;
+	-webkit-transition: 1s ease all;
+	transition: 1s ease all;
+}
+
+.post_card:hover a{
+	display: block;
+}
+
+
